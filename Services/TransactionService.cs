@@ -41,18 +41,28 @@ namespace bankingapi.Services
 
         public async Task<TransferDto?> MakeTransfer(TransferDto transferDto)
         {
-            var transfer = transferDto.ToTransactionModelFromTransfer();
-            var customer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == transferDto.SenderId);
-            var reciever = await _context.Customers.FirstOrDefaultAsync(y => y.Id == transferDto.RecieverId);
-            if(customer == null || reciever == null){
-                return null;
+            try{
+                var flutterwave = new FlutterwaveService();
+                var transfer = transferDto.ToTransactionModelFromTransfer();
+                var customer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == transferDto.SenderId);
+                var reciever = await _context.Customers.FirstOrDefaultAsync(y => y.AccountNo == transferDto.AccountNo);
+                if(customer == null || reciever == null){
+                    return null;
+                }
+                if(customer.AccountNo == transferDto.AccountNo){
+                    throw new InvalidOperationException("Cannot send to the same account");
+                }
+                
+
+                customer.AccountBalance -= transferDto.Amount;
+                reciever.AccountBalance += transferDto.Amount;
+                await _context.Transactions.AddAsync(transfer);
+                await _context.SaveChangesAsync();
+                return transferDto;
             }
-            
-            customer.AccountBalance -= transferDto.Amount;
-            reciever.AccountBalance += transferDto.Amount;
-            await _context.Transactions.AddAsync(transfer);
-            await _context.SaveChangesAsync();
-            return transferDto;
+            catch(Exception ex){
+                throw new Exception(ex.ToString());
+            }
         }
 
             

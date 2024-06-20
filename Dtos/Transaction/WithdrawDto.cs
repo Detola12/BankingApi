@@ -7,8 +7,8 @@ namespace bankingapi.Dtos.Transaction
 {
     public class WithdrawDto
     {
-        public Guid Id{ get; set; }
         public Guid CustomerId{ get; set; }
+        public string AccountNo{ get; set; } = string.Empty;
         public decimal Amount { get; set; }   
     }
 }

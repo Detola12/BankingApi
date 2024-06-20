@@ -13,14 +13,12 @@ namespace bankingapi.Models
     {
         public Guid Id{ get; set; }
         public Guid SenderId{ get; set; }
-        public Guid RecieverId {get; set; }
+        public string AccountNo {get; set; } = string.Empty;
         [Range(0,2)]
         public TransactionType TransactionType{ get; set; }
         public decimal Amount { get; set; }
         [ForeignKey("SenderId")]
         public Customer? Sender{ get; set; }
-        [ForeignKey("RecieverId")]
-        public Customer? Reciever{ get; set; }
         public DateTime AddedOn {get; set;} = DateTime.UtcNow;
         
         

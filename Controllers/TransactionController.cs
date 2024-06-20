@@ -23,6 +23,7 @@ namespace bankingapi.Controllers
                 if(!_service.CheckBalance(transferDto.SenderId, transferDto.Amount)){
                     return BadRequest(new{Status = "Failed", Message = "Insuffient Balance"});
                 }
+            
                 var transaction = await _service.MakeTransfer(transferDto);
                 return Ok(new {Status = "Success", data = transaction});
             }

@@ -45,6 +45,7 @@ namespace bankingapi.Mappers
                 PhoneNumber = customer.PhoneNumber,
                 BVN = customer.BVN,
                 AccountNo = customer.AccountNo,
+                AccountBalance = customer.AccountBalance,
                 AccountType = customer.AccountType.GetDisplayName(),
             };
         }

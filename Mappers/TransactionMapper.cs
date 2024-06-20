@@ -12,7 +12,7 @@ namespace bankingapi.Mappers
         public static Transaction ToTransactionModelFromTransfer(this TransferDto transferDto){
             return new Transaction{
                 SenderId = transferDto.SenderId,
-                RecieverId = transferDto.RecieverId,
+                AccountNo = transferDto.AccountNo,
                 Amount = transferDto.Amount,
                 TransactionType = TransactionType.Transfer,
             };
@@ -21,7 +21,7 @@ namespace bankingapi.Mappers
         public static Transaction ToTransactionModelFromWithdraw(this WithdrawDto withdrawDto){
             return new Transaction{
                 SenderId = withdrawDto.CustomerId,
-                RecieverId = withdrawDto.CustomerId,
+                AccountNo = withdrawDto.AccountNo,
                 Amount = withdrawDto.Amount,
                 TransactionType = TransactionType.WithDraw,
             };
@@ -29,7 +29,7 @@ namespace bankingapi.Mappers
         public static Transaction ToTransactionModelFromDeposit(this DepositDto depositDto){
             return new Transaction{
                 SenderId = depositDto.CustomerId,
-                RecieverId = depositDto.CustomerId,
+                AccountNo = depositDto.AccountNo,
                 Amount = depositDto.Amount,
                 TransactionType = TransactionType.WithDraw,
             };

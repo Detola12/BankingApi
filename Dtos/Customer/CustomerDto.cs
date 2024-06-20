@@ -24,7 +24,7 @@ namespace bankingapi.Dtos.Customer
         [EnumDataType(typeof(AccountType))]
         public string AccountType {get; set;}
         public DateTime DateOfBirth {get; set;}
-        // public decimal AccountBalance {get; set;}
+        public decimal AccountBalance {get; set;}
         public string? AccountNo {get; set;} = null;
 
     }

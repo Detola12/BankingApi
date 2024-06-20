@@ -125,3 +125,4 @@ C:\Users\adeto\Documents\WebApi\bankingapi\obj\Debug\net8.0\refint\bankingapi.dl
 C:\Users\adeto\Documents\WebApi\bankingapi\obj\Debug\net8.0\bankingapi.pdb
 C:\Users\adeto\Documents\WebApi\bankingapi\obj\Debug\net8.0\bankingapi.genruntimeconfig.cache
 C:\Users\adeto\Documents\WebApi\bankingapi\obj\Debug\net8.0\ref\bankingapi.dll
+C:\Users\adeto\Documents\WebApi\bankingapi\obj\Debug\net8.0\bankingapi.sourcelink.json
